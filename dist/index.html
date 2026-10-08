@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="面向销售与客户的 Google Cloud 数据工程服务导览：业务价值、选型边界、技术细节与官方定价入口。" />
+  <title>GCP 数据工程服务导览</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c4ed8'/%3E%3Cpath d='M14 38h12l7-18 8 28 5-12h5' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="返回主页"><span class="brand-mark">G</span><span>数据工程服务导览</span></a>
+    <nav aria-label="页面导航"><a href="#journey">业务旅程</a><a href="#catalog">产品目录</a><a href="#scope">口径说明</a></nav>
+  </header>
+
+  <main id="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GOOGLE CLOUD · DATA ENGINEERING</p>
+        <h1>把业务数据，变成<br><em>可用、可信、可行动</em>的资产</h1>
+        <p class="lead">用业务语言理解从“数据从哪里来”到“如何持续可信地交付”的服务组合。每一项均附官方文档和官方价格入口。</p>
+        <div class="hero-actions"><a class="button primary" href="#journey">按业务流程浏览</a><a class="button quiet" href="#catalog">直接看服务</a></div>
+      </div>
+      <aside class="hero-card" aria-label="阅读提示">
+        <span class="chip">销售与客户演示版</span>
+        <h2>先从问题出发</h2>
+        <ol><li>您的数据是文件、数据库变更，还是实时事件？</li><li>需要低代码接入、流式计算，还是已有 Spark/Kafka？</li><li>如何让跨团队数据可追溯、可验证？</li></ol>
+        <p>点击任一服务，查看适用场景、边界、技术说明与官方来源。</p>
+      </aside>
+    </section>
+
+    <section id="journey" class="section">
+      <div class="section-heading"><p class="eyebrow">业务旅程</p><h2>一条可运营的数据生产线</h2><p>这不是强制架构；从您的起点选择需要的环节即可。</p></div>
+      <div class="journey-grid">
+        <article class="journey-step intake"><span class="step-no">01</span><h3>接入数据</h3><p>接住数据库变化、文件历史数据与业务事件。</p><div class="pills"><button data-service="datastream">Datastream</button><button data-service="transfer">Storage Transfer</button><button data-service="pubsub">Pub/Sub</button><button data-service="kafka">Managed Kafka</button></div></article>
+        <article class="journey-step process"><span class="step-no">02</span><h3>加工数据</h3><p>把原始记录清洗、关联、聚合为可消费的结果。</p><div class="pills"><button data-service="dataflow">Dataflow</button><button data-service="spark">Managed Spark</button><button data-service="fusion">Cloud Data Fusion</button></div></article>
+        <article class="journey-step operate"><span class="step-no">03</span><h3>稳定交付</h3><p>管理跨系统依赖、转换代码和运行节奏。</p><div class="pills"><button data-service="airflow">Managed Airflow</button><button data-service="dataform">Dataform</button></div></article>
+        <article class="journey-step trust"><span class="step-no">04</span><h3>治理与信任</h3><p>让人和 AI 都能找到、理解并信任数据。</p><div class="pills"><button data-service="catalog">Knowledge Catalog</button><button data-service="metastore">Dataproc Metastore</button></div></article>
+      </div>
+    </section>
+
+    <section class="selector section" aria-labelledby="selector-title">
+      <div class="section-heading"><p class="eyebrow">快速选型</p><h2 id="selector-title">您正在解决哪一种业务问题？</h2></div>
+      <div class="scenario-tabs" role="tablist" aria-label="业务问题">
+        <button role="tab" aria-selected="true" data-scenario="realtime">让运营看见实时变化</button>
+        <button role="tab" aria-selected="false" data-scenario="migration">把历史数据带到云上</button>
+        <button role="tab" aria-selected="false" data-scenario="reliable">让每日交付不靠人工</button>
+        <button role="tab" aria-selected="false" data-scenario="trust">让指标经得起追问</button>
+      </div>
+      <div id="scenario-panel" class="scenario-panel"></div>
+    </section>
+
+    <section id="catalog" class="section catalog-section">
+      <div class="section-heading"><p class="eyebrow">服务目录</p><h2>按能力查看 10 项核心服务</h2><p>卡片采用业务语言；详情页保留技术定位和官方入口。</p></div>
+      <div id="catalog-grid" class="catalog-grid"></div>
+    </section>
+
+    <section id="scope" class="scope section">
+      <div><p class="eyebrow">口径说明</p><h2>聚焦数据工程，不把目的地当成管道</h2></div>
+      <p>本演示涵盖数据接入、消息流、批流处理、集成、编排、ELT 开发、元数据与质量治理。<strong>未纳入</strong>数据库、数据仓、对象存储和 BI 产品，例如 BigQuery、Cloud SQL、Spanner、Bigtable、Cloud Storage、Looker。它们可以是管道的来源或目标，但不是本页的“数据工程服务”范围。</p>
+    </section>
+  </main>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <div class="dialog-inner">
+      <button class="dialog-close" aria-label="关闭详情">×</button>
+      <div id="detail-content"></div>
+    </div>
+  </dialog>
+  <footer>内容依据 Google Cloud 官方产品与文档页面整理。价格、可用区域与发布阶段可能变化，请以“官方定价”页面结算时显示的信息为准。</footer>
+  <script src="app.js"></script>
+</body>
+</html>
