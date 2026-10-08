@@ -3,72 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="面向销售与客户的 Google Cloud 数据工程服务导览：业务价值、选型边界、技术细节与官方定价入口。" />
-  <title>GCP 数据工程服务导览</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c4ed8'/%3E%3Cpath d='M14 38h12l7-18 8 28 5-12h5' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <meta name="description" content="从业务问题出发，理解 Google Cloud 数据工程服务该怎么选。" />
+  <title>数据管道怎么选｜GCP 业务导览</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b57d0'/%3E%3Cpath d='M14 38h12l7-18 8 28 5-12h5' fill='none' stroke='white' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="override.css" />
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="返回主页"><span class="brand-mark">G</span><span>数据工程服务导览</span></a>
-    <nav aria-label="页面导航"><a href="#journey">业务旅程</a><a href="#catalog">产品目录</a><a href="#scope">口径说明</a></nav>
-  </header>
-
-  <main id="app">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">GOOGLE CLOUD · DATA ENGINEERING</p>
-        <h1>把业务数据，变成<br><em>可用、可信、可行动</em>的资产</h1>
-        <p class="lead">用业务语言理解从“数据从哪里来”到“如何持续可信地交付”的服务组合。每一项均附官方文档和官方价格入口。</p>
-        <div class="hero-actions"><a class="button primary" href="#journey">按业务流程浏览</a><a class="button quiet" href="#catalog">直接看服务</a></div>
-      </div>
-      <aside class="hero-card" aria-label="阅读提示">
-        <span class="chip">销售与客户演示版</span>
-        <h2>先从问题出发</h2>
-        <ol><li>您的数据是文件、数据库变更，还是实时事件？</li><li>需要低代码接入、流式计算，还是已有 Spark/Kafka？</li><li>如何让跨团队数据可追溯、可验证？</li></ol>
-        <p>点击任一服务，查看适用场景、边界、技术说明与官方来源。</p>
-      </aside>
+  <header class="topbar"><a class="brand" href="./"><span>●</span> 数据管道怎么选</a><a href="#expert" class="quiet-link">我是售前 / 技术同事</a></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">给销售、客户和售前的业务导览</p>
+      <h1>别先记服务名。<br>先说说，<em>你想解决什么麻烦？</em></h1>
+      <p class="lead">下面没有“标准答案”。选择最接近的情况，我们会用普通话告诉你：先做什么、为什么，以及需要找谁一起做。</p>
     </section>
-
-    <section id="journey" class="section">
-      <div class="section-heading"><p class="eyebrow">业务旅程</p><h2>一条可运营的数据生产线</h2><p>这不是强制架构；从您的起点选择需要的环节即可。</p></div>
-      <div class="journey-grid">
-        <article class="journey-step intake"><span class="step-no">01</span><h3>接入数据</h3><p>接住数据库变化、文件历史数据与业务事件。</p><div class="pills"><button data-service="datastream">Datastream</button><button data-service="transfer">Storage Transfer</button><button data-service="pubsub">Pub/Sub</button><button data-service="kafka">Managed Kafka</button></div></article>
-        <article class="journey-step process"><span class="step-no">02</span><h3>加工数据</h3><p>把原始记录清洗、关联、聚合为可消费的结果。</p><div class="pills"><button data-service="dataflow">Dataflow</button><button data-service="spark">Managed Spark</button><button data-service="fusion">Cloud Data Fusion</button></div></article>
-        <article class="journey-step operate"><span class="step-no">03</span><h3>稳定交付</h3><p>管理跨系统依赖、转换代码和运行节奏。</p><div class="pills"><button data-service="airflow">Managed Airflow</button><button data-service="dataform">Dataform</button></div></article>
-        <article class="journey-step trust"><span class="step-no">04</span><h3>治理与信任</h3><p>让人和 AI 都能找到、理解并信任数据。</p><div class="pills"><button data-service="catalog">Knowledge Catalog</button><button data-service="metastore">Dataproc Metastore</button></div></article>
+    <section class="diagnosis" aria-labelledby="question-title">
+      <div class="diagnosis-head"><span class="round-no">1</span><div><p class="eyebrow">一分钟判断</p><h2 id="question-title">现在最让你头痛的是哪件事？</h2></div></div>
+      <div class="problem-grid" id="problem-grid"></div>
+      <section id="answer" class="answer" aria-live="polite"></section>
+    </section>
+    <section class="plain section">
+      <div><p class="eyebrow">先理解全貌</p><h2>数据管道，就像一条<br>“数据加工流水线”</h2><p>它不是把数据放到某个地方那么简单，而是让数据能稳定地从业务现场到达需要它的人手里。</p></div>
+      <div class="flow" aria-label="数据流水线示意">
+        <div><b>1</b><h3>拿到数据</h3><p>订单、库存、客户、文件、设备消息</p></div><span>→</span>
+        <div><b>2</b><h3>整理数据</h3><p>去掉错误、统一格式、算出业务结果</p></div><span>→</span>
+        <div><b>3</b><h3>每天自动做</h3><p>按时运行，失败能发现、能重试</p></div><span>→</span>
+        <div><b>4</b><h3>让人放心用</h3><p>知道来源、定义和质量是否可靠</p></div>
       </div>
     </section>
-
-    <section class="selector section" aria-labelledby="selector-title">
-      <div class="section-heading"><p class="eyebrow">快速选型</p><h2 id="selector-title">您正在解决哪一种业务问题？</h2></div>
-      <div class="scenario-tabs" role="tablist" aria-label="业务问题">
-        <button role="tab" aria-selected="true" data-scenario="realtime">让运营看见实时变化</button>
-        <button role="tab" aria-selected="false" data-scenario="migration">把历史数据带到云上</button>
-        <button role="tab" aria-selected="false" data-scenario="reliable">让每日交付不靠人工</button>
-        <button role="tab" aria-selected="false" data-scenario="trust">让指标经得起追问</button>
-      </div>
-      <div id="scenario-panel" class="scenario-panel"></div>
+    <section class="story section">
+      <div class="story-copy"><p class="eyebrow">用一个业务例子串起来</p><h2>“我想每天早上看到准确的库存和销售情况。”</h2><p>这句话背后不必先出现十个产品名。通常只需要把事情拆成四步：</p></div>
+      <ul class="story-steps"><li><b>从业务系统取数</b><span>订单、库存有变化时，把变化带出来。</span></li><li><b>把数据整理成同一种语言</b><span>例如统一商品编码、门店名称和日期。</span></li><li><b>让过程按时自动跑</b><span>每天早上前完成；失败时有人能看到。</span></li><li><b>确认结果可信</b><span>发现缺失、重复或过期数据时提醒团队。</span></li></ul>
+      <p class="story-note">具体要不要实时、是否已有 Kafka 或 Spark、数据在哪里，才决定底层服务。先把业务目标讲清楚，选型会简单得多。</p>
     </section>
-
-    <section id="catalog" class="section catalog-section">
-      <div class="section-heading"><p class="eyebrow">服务目录</p><h2>按能力查看 10 项核心服务</h2><p>卡片采用业务语言；详情页保留技术定位和官方入口。</p></div>
-      <div id="catalog-grid" class="catalog-grid"></div>
+    <section id="expert" class="expert section">
+      <div class="expert-title"><p class="eyebrow">给售前与技术同事</p><h2>需要服务名、技术边界和官方链接？在这里展开。</h2><p>这些内容刻意放在第二层，避免干扰第一次沟通。</p></div>
+      <div id="expert-list" class="expert-list"></div>
     </section>
-
-    <section id="scope" class="scope section">
-      <div><p class="eyebrow">口径说明</p><h2>聚焦数据工程，不把目的地当成管道</h2></div>
-      <p>本演示涵盖数据接入、消息流、批流处理、集成、编排、ELT 开发、元数据与质量治理。<strong>未纳入</strong>数据库、数据仓、对象存储和 BI 产品，例如 BigQuery、Cloud SQL、Spanner、Bigtable、Cloud Storage、Looker。它们可以是管道的来源或目标，但不是本页的“数据工程服务”范围。</p>
-    </section>
+    <section class="scope section"><p><strong>范围：</strong>本页讨论数据如何接入、加工、自动运行和受治理地交付；不将 BigQuery、Cloud SQL、Spanner、Bigtable、Cloud Storage、Looker 等数据库、数仓、存储或 BI 产品计入“数据管道服务”。各产品能力、发布阶段与价格请以其官方页面为准。</p></section>
   </main>
-
-  <dialog id="detail-dialog" aria-labelledby="detail-title">
-    <div class="dialog-inner">
-      <button class="dialog-close" aria-label="关闭详情">×</button>
-      <div id="detail-content"></div>
-    </div>
-  </dialog>
-  <footer>内容依据 Google Cloud 官方产品与文档页面整理。价格、可用区域与发布阶段可能变化，请以“官方定价”页面结算时显示的信息为准。</footer>
+  <footer>内容仅依据 Google Cloud 官方文档和官方产品/定价页整理 · 价格随区域与用量变化，请以官方实时页面核算</footer>
   <script src="app.js"></script>
 </body>
 </html>
